@@ -105,11 +105,33 @@ document.getElementById('clearBtn').addEventListener('click', async () => {
 
 // Test notification button
 document.getElementById('testNotificationBtn').addEventListener('click', async () => {
+  const statusDiv = document.getElementById('status');
+  const button = document.getElementById('testNotificationBtn');
+  
   try {
-    // Send message to background script to trigger test notification
-    await chrome.runtime.sendMessage({ action: 'testNotification' });
+    button.disabled = true;
+    button.textContent = 'Testing...';
     
-    // Also create a test notification directly from popup
+    statusDiv.textContent = 'Checking notification permissions...';
+    statusDiv.className = 'success';
+    statusDiv.style.display = 'block';
+    
+    // Check if notifications API is available
+    if (!chrome.notifications) {
+      statusDiv.textContent = 'X Error: Notifications API not available\n\nThis might mean:\n- Extension needs to be reloaded\n- Chrome version is too old';
+      statusDiv.className = 'error';
+      button.disabled = false;
+      button.textContent = 'Test Notification';
+      return;
+    }
+    
+    // Try to check notification permissions (may not be available in all Chrome versions)
+    // We'll just try to create the notification and handle errors
+    console.log('Notifications API available:', !!chrome.notifications);
+    
+    statusDiv.textContent = 'Creating test notification...';
+    
+    // Create test notification
     chrome.notifications.create({
       type: 'basic',
       iconUrl: chrome.runtime.getURL('icon48.png'),
@@ -118,14 +140,43 @@ document.getElementById('testNotificationBtn').addEventListener('click', async (
       priority: 2
     }, (notificationId) => {
       if (chrome.runtime.lastError) {
-        console.error('Error creating test notification:', chrome.runtime.lastError);
-        alert('Notification error: ' + chrome.runtime.lastError.message + '\n\nCheck:\n1. Chrome notifications are enabled\n2. Extension has notification permission\n3. Check browser console for details');
+        const error = chrome.runtime.lastError.message;
+        console.error('Error creating test notification:', error);
+        statusDiv.textContent = `X Error: ${error}\n\nTroubleshooting:\n1. Check chrome://settings/content/notifications\n2. Check system notification settings\n3. Reload extension\n4. Check service worker console`;
+        statusDiv.className = 'error';
       } else {
-        console.log('Test notification created:', notificationId);
+        console.log('Test notification created successfully:', notificationId);
+        statusDiv.textContent = '✓ Test notification sent!\n\nCheck your system notifications\n(top-right on Mac, bottom-right on Windows)';
+        statusDiv.className = 'success';
+        
+        // Also try sending message to background script
+        chrome.runtime.sendMessage({ action: 'testNotification' }, (response) => {
+          if (chrome.runtime.lastError) {
+            console.log('Background script message error (this is OK):', chrome.runtime.lastError);
+          }
+        });
       }
+      
+      button.disabled = false;
+      button.textContent = 'Test Notification';
+      
+      // Auto-hide after 5 seconds
+      setTimeout(() => {
+        statusDiv.style.display = 'none';
+      }, 5000);
     });
+    
   } catch (error) {
     console.error('Error testing notification:', error);
-    alert('Error: ' + error.message);
+    statusDiv.textContent = `X Error: ${error.message}\n\nCheck the browser console for details`;
+    statusDiv.className = 'error';
+    statusDiv.style.display = 'block';
+    
+    button.disabled = false;
+    button.textContent = 'Test Notification';
+    
+    setTimeout(() => {
+      statusDiv.style.display = 'none';
+    }, 5000);
   }
 });
