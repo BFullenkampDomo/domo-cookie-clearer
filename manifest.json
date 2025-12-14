@@ -7,8 +7,7 @@
     "cookies",
     "activeTab",
     "webRequest",
-    "tabs",
-    "notifications"
+    "tabs"
   ],
   "host_permissions": [
     "*://*.domo.com/*"
