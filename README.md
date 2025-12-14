@@ -135,3 +135,9 @@ See [CHANGELOG.md](CHANGELOG.md) for version history.
 ---
 
 **Note**: This extension is not affiliated with or endorsed by Domo, Inc. It is an independent tool created to help users manage their Domo instances more effectively.
+
+## 🔗 Links
+
+- **Repository**: https://github.com/BFullenkampDomo/domo-cookie-clearer
+- **Issues**: https://github.com/BFullenkampDomo/domo-cookie-clearer/issues
+- **Privacy Policy**: https://github.com/BFullenkampDomo/domo-cookie-clearer/blob/main/PRIVACY_POLICY.md

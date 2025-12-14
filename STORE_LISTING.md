@@ -69,12 +69,12 @@ See our full [Privacy Policy](https://github.com/YOUR_USERNAME/domo-cookie-clear
 ### Support
 
 If you encounter any issues or have questions:
-- Open an issue on our [GitHub repository](https://github.com/YOUR_USERNAME/domo-cookie-clearer)
+- Open an issue on our [GitHub repository](https://github.com/BFullenkampDomo/domo-cookie-clearer)
 - Check existing issues for solutions
 
 ### Open Source
 
-This extension is open source. View the code, contribute, or report issues on GitHub.
+This extension is open source. View the code, contribute, or report issues on [GitHub](https://github.com/BFullenkampDomo/domo-cookie-clearer).
 
 ---
 
@@ -103,15 +103,13 @@ English (United States)
 
 ## Privacy Policy URL
 
-https://github.com/YOUR_USERNAME/domo-cookie-clearer/blob/main/PRIVACY_POLICY.md
-
-(Replace YOUR_USERNAME with your actual GitHub username)
+https://github.com/BFullenkampDomo/domo-cookie-clearer/blob/main/PRIVACY_POLICY.md
 
 ## Support URL (Optional)
 
-https://github.com/YOUR_USERNAME/domo-cookie-clearer/issues
+https://github.com/BFullenkampDomo/domo-cookie-clearer/issues
 
 ## Homepage URL (Optional)
 
-https://github.com/YOUR_USERNAME/domo-cookie-clearer
+https://github.com/BFullenkampDomo/domo-cookie-clearer
 

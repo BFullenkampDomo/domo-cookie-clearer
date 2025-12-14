@@ -45,13 +45,11 @@ If we make changes to this privacy policy, we will update the "Last Updated" dat
 ## Contact
 
 If you have questions about this privacy policy, please:
-- Open an issue on our [GitHub repository](https://github.com/YOUR_USERNAME/domo-cookie-clearer)
+- Open an issue on our [GitHub repository](https://github.com/BFullenkampDomo/domo-cookie-clearer)
 - Contact us through the Chrome Web Store listing
 
 ## Hosting
 
 This privacy policy is hosted on GitHub. The latest version is always available at:
-https://github.com/YOUR_USERNAME/domo-cookie-clearer/blob/main/PRIVACY_POLICY.md
-
-(Replace YOUR_USERNAME with your actual GitHub username)
+https://github.com/BFullenkampDomo/domo-cookie-clearer/blob/main/PRIVACY_POLICY.md
 
