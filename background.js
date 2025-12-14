@@ -50,13 +50,15 @@ async function show431ErrorNotification(domain) {
     title: 'Domo Cookie Clearer',
     message: `431 error detected on ${domain}. Click the extension icon to clear cookies.`,
     priority: 2,
-    requireInteraction: false
+    requireInteraction: true,  // Keep notification visible until user interacts
+    silent: false  // Make sure it makes a sound/alert
   }, (notificationId) => {
     if (chrome.runtime.lastError) {
       console.error('[431 Detection] Error creating notification:', chrome.runtime.lastError);
       console.error('[431 Detection] Error details:', chrome.runtime.lastError.message);
     } else {
       console.log(`[431 Detection] Notification created successfully with ID: ${notificationId}`);
+      console.log(`[431 Detection] Check your system notification center if you don't see it immediately`);
     }
   });
 }
