@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Chrome Web Store Support
+    url: https://chrome.google.com/webstore
+    about: For issues with the Chrome Web Store listing
+

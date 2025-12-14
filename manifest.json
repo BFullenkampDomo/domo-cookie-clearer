@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Domo Cookie Clearer",
+  "version": "1.0.0",
+  "description": "Clear Domo cookies with one click to fix 431 errors",
+  "permissions": [
+    "cookies",
+    "activeTab",
+    "webRequest",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": [
+    "*://*.domo.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
