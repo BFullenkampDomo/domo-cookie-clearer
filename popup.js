@@ -61,7 +61,7 @@ document.getElementById('clearBtn').addEventListener('click', async () => {
       // Show notification that cookies have been cleared
       chrome.notifications.create({
         type: 'basic',
-        iconUrl: 'icon48.png',
+        iconUrl: chrome.runtime.getURL('icon48.png'),
         title: 'Domo Cookie Clearer',
         message: `Cleared ${result.removedCount} cookie${result.removedCount !== 1 ? 's' : ''} for ${currentDomain}`,
         priority: 1
@@ -100,5 +100,32 @@ document.getElementById('clearBtn').addEventListener('click', async () => {
     setTimeout(() => {
       statusDiv.style.display = 'none';
     }, 5000);
+  }
+});
+
+// Test notification button
+document.getElementById('testNotificationBtn').addEventListener('click', async () => {
+  try {
+    // Send message to background script to trigger test notification
+    await chrome.runtime.sendMessage({ action: 'testNotification' });
+    
+    // Also create a test notification directly from popup
+    chrome.notifications.create({
+      type: 'basic',
+      iconUrl: chrome.runtime.getURL('icon48.png'),
+      title: 'Domo Cookie Clearer',
+      message: 'Test notification: 431 error detected on test-customer.domo.com. Click the extension icon to clear cookies.',
+      priority: 2
+    }, (notificationId) => {
+      if (chrome.runtime.lastError) {
+        console.error('Error creating test notification:', chrome.runtime.lastError);
+        alert('Notification error: ' + chrome.runtime.lastError.message + '\n\nCheck:\n1. Chrome notifications are enabled\n2. Extension has notification permission\n3. Check browser console for details');
+      } else {
+        console.log('Test notification created:', notificationId);
+      }
+    });
+  } catch (error) {
+    console.error('Error testing notification:', error);
+    alert('Error: ' + error.message);
   }
 });
